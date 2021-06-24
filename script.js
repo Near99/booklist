@@ -22,7 +22,7 @@ function addBookToLibrary(title, author, pages, language, year, read) {
   pages = prompt('Pages:');
   language = prompt('Language:');
   year = prompt('Year: ');
-  read = prompt('Read: ');
+  read = false;
   myLibrary.push(new Book(title, author, pages, language, year, read));
 
   reset();
@@ -30,7 +30,7 @@ function addBookToLibrary(title, author, pages, language, year, read) {
 }
 
 myLibrary.push(new Book('JS', 'Charles', '399', 'English', '1996', false));
-myLibrary.push(new Book('Node.js', 'Charles', '399', 'English', '1996', false));
+myLibrary.push(new Book('Node.js', 'Charles', '399', 'English', '1996', true));
 
 function createBookCards() {
   for (let i = 0; i < myLibrary.length; i++) {
@@ -39,6 +39,9 @@ function createBookCards() {
     newCard.setAttribute('data-book', `${i}`);
     wrapper.appendChild(newCard);
     newUL.setAttribute('data-ul', `${i}`);
+    if (myLibrary[i].read === true) {
+      newUL.classList.add('haveRead');
+    }
     newCard.appendChild(newUL);
     for (let j = 0; j < bookInfo.length; j++) {
       const newLI = document.createElement('li');
