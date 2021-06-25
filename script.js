@@ -3,6 +3,33 @@ const bookInfo = ['title', 'author', 'pages', 'language', 'year'];
 const propertyStr = ['', 'By', 'Number of Pages:', 'Language:', 'Published:'];
 let myLibrary = []; // Store this array somewhere
 
+const closeFormContainer = document.querySelector('.close-form-container');
+const formContainer = document.querySelector('.form-container');
+const submitNewBookBut = document.querySelector('.book-info');
+
+submitNewBookBut.addEventListener('submit', (e) => {
+  const titleInput = document.getElementById('title').value;
+  const authorInput = document.getElementById('author').value;
+  const pageInput = document.getElementById('page').value;
+  const languageInput = document.getElementById('language').value;
+  const yearInput = document.getElementById('year').value;
+  const readInput = document.getElementById('read').checked;
+  e.preventDefault();
+  addBookToLibrary(
+    titleInput,
+    authorInput,
+    pageInput,
+    languageInput,
+    yearInput,
+    readInput
+  );
+  formContainer.classList.remove('active');
+});
+
+closeFormContainer.addEventListener('click', () => {
+  formContainer.classList.remove('active');
+});
+
 function Book(title, author, pages, language, year, read) {
   this.title = title;
   this.author = author;
@@ -12,19 +39,8 @@ function Book(title, author, pages, language, year, read) {
   this.read = read;
 }
 
-Book.prototype.isRead = (statusCode) => {
-  statusCode == 0 ? this.read === true : false;
-};
-
 function addBookToLibrary(title, author, pages, language, year, read) {
-  title = prompt('Title: ');
-  author = prompt('Author: ');
-  pages = prompt('Pages:');
-  language = prompt('Language:');
-  year = prompt('Year: ');
-  read = false;
   myLibrary.push(new Book(title, author, pages, language, year, read));
-
   reset();
   init();
 }
@@ -76,7 +92,8 @@ function addNewBookButton() {
   wrapper.appendChild(buttonDiv);
   buttonDiv.appendChild(button);
   button.addEventListener('click', () => {
-    addBookToLibrary();
+    // addBookToLibrary();
+    formContainer.classList.add('active');
   });
 }
 
