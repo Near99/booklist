@@ -1,34 +1,10 @@
 const wrapper = document.querySelector('.bslp');
+const closeFormContainer = document.querySelector('.close-form-container');
+const formContainer = document.querySelector('.form-container');
+const bookInfoForm = document.querySelector('.book-info');
 const bookInfo = ['title', 'author', 'pages', 'language', 'year'];
 const propertyStr = ['', 'By', 'Number of Pages:', 'Language:', 'Published:'];
 let myLibrary = []; // Store this array somewhere
-
-const closeFormContainer = document.querySelector('.close-form-container');
-const formContainer = document.querySelector('.form-container');
-const submitNewBookBut = document.querySelector('.book-info');
-
-submitNewBookBut.addEventListener('submit', (e) => {
-  const titleInput = document.getElementById('title').value;
-  const authorInput = document.getElementById('author').value;
-  const pageInput = document.getElementById('page').value;
-  const languageInput = document.getElementById('language').value;
-  const yearInput = document.getElementById('year').value;
-  const readInput = document.getElementById('read').checked;
-  e.preventDefault();
-  addBookToLibrary(
-    titleInput,
-    authorInput,
-    pageInput,
-    languageInput,
-    yearInput,
-    readInput
-  );
-  formContainer.classList.remove('active');
-});
-
-closeFormContainer.addEventListener('click', () => {
-  formContainer.classList.remove('active');
-});
 
 function Book(title, author, pages, language, year, read) {
   this.title = title;
@@ -94,6 +70,31 @@ function addNewBookButton() {
   button.addEventListener('click', () => {
     // addBookToLibrary();
     formContainer.classList.add('active');
+    closeFormContainer.addEventListener('click', () => {
+      formContainer.classList.remove('active');
+    });
+  });
+}
+
+function addNewBookForm() {
+  bookInfoForm.addEventListener('submit', (e) => {
+    const titleInput = document.getElementById('title').value;
+    const authorInput = document.getElementById('author').value;
+    const pageInput = document.getElementById('page').value;
+    const languageInput = document.getElementById('language').value;
+    const yearInput = document.getElementById('year').value;
+    const readInput = document.getElementById('read').checked;
+    e.preventDefault();
+    addBookToLibrary(
+      titleInput,
+      authorInput,
+      pageInput,
+      languageInput,
+      yearInput,
+      readInput
+    );
+    formContainer.classList.remove('active');
+    bookInfoForm.reset();
   });
 }
 
@@ -135,7 +136,6 @@ function updateReadStatus() {
       // For Debug use
       // console.log(e.target.parentElement.parentElement.firstChild);
       // console.log(e.target.parentNode.parentNode.attributes[0].nodeValue);
-
       if (
         myLibrary[
           Number(e.target.parentNode.parentNode.attributes[0].nodeValue)
@@ -179,6 +179,7 @@ function init() {
   createBookCards();
   displayBooks();
   addNewBookButton();
+  addNewBookForm();
   removeAndReadButton();
   updateReadStatus();
 }
