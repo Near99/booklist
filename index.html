@@ -2,109 +2,141 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Library</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
-      rel="stylesheet"
-    />
+    <title>Booklist</title>
   </head>
   <body>
-    <div class="form-container">
-      <form action="#" class="book-info">
-        <div class="close-form-container">
-          <p class="close-form">×</p>
+    <!-- form starts here -->
+    <div class="container">
+      <div class="form-container">
+        <div class="form-close">
+          <p class="form-close-button">×</p>
         </div>
-        <!-- <p class="close-form">×</p> -->
-        <div class="form-title-container">
-          <h1 class="form-title">Book Information</h1>
-        </div>
-        <label for="title">Title</label>
-        <input
-          type="text"
-          name=""
-          id="title"
-          class="form-control"
-          placeholder="Book Title"
-          required
-        />
-        <label for="author">Author</label>
-        <input
-          type="text"
-          name=""
-          id="author"
-          class="form-control"
-          placeholder="Author of Book"
-          required
-        />
-        <label for="page">Pages</label>
-        <input
-          type="number"
-          name=""
-          id="page"
-          class="form-control"
-          placeholder="Number of Pages"
-          required
-        />
-        <label for="language">Language</label>
-        <input
-          type="text"
-          name=""
-          id="language"
-          class="form-control"
-          placeholder="Written Language"
-          required
-        />
-        <label for="year">Publish Year</label>
-        <input
-          type="text"
-          name=""
-          id="year"
-          class="form-control"
-          placeholder="Year of Publish"
-          required
-        />
-        <span>
-          <label for="read">Read</label>
-          <input type="checkbox" name="" id="read" class="isRead" />
-        </span>
-        <button class="submit-new-book">Submit</button>
-      </form>
+        <form action="" class="submit-form">
+          <div class="form-header">
+            <h1>Book Information</h1>
+          </div>
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Book Title"
+            required
+          />
+          <label for="Author">Author</label>
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+            placeholder="Author of Book"
+            required
+          />
+          <label for="page">Pages</label>
+          <input
+            type="number"
+            class="form-control"
+            id="page"
+            placeholder="Number of Pages"
+            required
+          />
+          <label for="year">Year of Publish</label>
+          <input
+            type="text"
+            class="form-control"
+            id="year"
+            placeholder="Year of Publish"
+            required
+          />
+          <label for="language">Language</label>
+          <input
+            type="text"
+            class="form-control"
+            id="language"
+            placeholder="Written Language"
+            required
+          />
+          <button>Submit</button>
+        </form>
+      </div>
     </div>
+    <!-- form ends here -->
+
     <header>
-      <div>
-        <h1>Charles's Online Library</h1>
+      <div class="header-container">
+        <div class="page-logo">
+          <a href="">Near's Booklist</a>
+        </div>
+        <div class="menu">
+          <a href="">Orange</a>
+          <a href="">Apple</a>
+          <a href="">Blue</a>
+          <a href="">Green</a>
+          <a href="">Circle</a>
+          <a href="">Purple</a>
+        </div>
       </div>
     </header>
-    <section class="qsfwww">
-      <div>
-        <h2>
-          To acquire knowledge, one must study; but to acquire wisdom, one must
-          observe.
-        </h2>
-      </div>
-      <div>
-        <p>
-          No matter how busy you may think you are, you must find time for
-          reading, or surrender yourself to self-chosen ignorance.
-        </p>
-      </div>
-      <div>
-        <p>
-          Let us study things that are no more. It is necessary to understand
-          them, if only to avoid them.
-        </p>
+    <section>
+      <div class="main-section">
+        <div class="section-title">
+          <h1>I Love Reading</h1>
+        </div>
+        <div class="section-sub-title">
+          <p>
+            Color really isn't that diffcult to get right, if you know where to
+            start.
+          </p>
+          <p>Learn by doing and you'll be a master in no time.</p>
+        </div>
+        <div class="add-book-button-container">
+          <button class="add-book-button">Add Your New Book</button>
+        </div>
       </div>
     </section>
-    <section class="bslp"></section>
+    <!-- Card grid starts here -->
+    <div class="grid">
+      <!-- card starts here -->
+      <!-- <div class="card">
+        <div class="remove">
+          <p>×</p>
+        </div>
+        <div class="header">
+          <h2>The Old Man and The Sea</h2>
+        </div>
+        <div class="book-info">
+          <h4>Written by Charles Wong</h4>
+          <h4>230 Pages</h4>
+          <h4>Published in 1959</h4>
+          <h4>Language: English</h4>
+        </div>
+        <div class="read-status">
+          <p class="read-status-text">Done Reading</p>
+        </div>
+      </div> -->
+      <!-- card ends here -->
+    </div>
+    <!-- card grid ends here  -->
     <script src="script.js"></script>
   </body>
 </html>
