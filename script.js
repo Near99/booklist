@@ -45,6 +45,17 @@ class Store {
 
     localStorage.setItem('books', JSON.stringify(books));
   }
+
+  static updateBook(title) {
+    const books = Store.getBooks();
+    books.forEach((book) => {
+      if (book.title === title) {
+        book.read = true;
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }
 
 class Display {
@@ -103,6 +114,7 @@ class Display {
             book.read = true;
             e.target.parentElement.parentElement.classList.add('have-read');
             e.target.innerText = 'Done Reading';
+            Store.updateBook(book.title);
           }
         });
       });
@@ -148,15 +160,24 @@ const formEventController = () => {
     const pageInput = document.getElementById('page').value;
     const yearInput = document.getElementById('year').value;
     const languageInput = document.getElementById('language').value;
+    let read = false;
     let tmpBookInfo = new Book(
       titleInput,
       authorInput,
       pageInput,
       yearInput,
-      languageInput
+      languageInput,
+      read
     );
     e.preventDefault();
-    addNewBook(titleInput, authorInput, pageInput, yearInput, languageInput);
+    addNewBook(
+      titleInput,
+      authorInput,
+      pageInput,
+      yearInput,
+      languageInput,
+      read
+    );
     formContainer.classList.remove('active');
     formSubmit.reset();
     Display.addBookToList(tmpBookInfo);
