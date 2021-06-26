@@ -7,7 +7,6 @@
 /* header */
 header {
   background: #fff;
-  /* border: #000 solid 2px; */
   height: 80px;
   display: flex;
   flex-flow: row;
@@ -21,7 +20,6 @@ header .header-container {
   flex-flow: row;
   justify-content: space-around;
   align-items: center;
-  /* border: #000 solid 2px; */
   width: 70%;
   height: 100%;
 }
@@ -31,11 +29,7 @@ header a {
   color: #000;
 }
 
-/* header .header-container .menu {
-} */
-
 header .header-container .menu a {
-  /* border: #000 solid 2px; */
   padding: 20px;
 }
 
@@ -53,9 +47,6 @@ section {
   font-family: 'Manrope', sans-serif;
   font-weight: bold;
 }
-
-/* section .main-section {
-} */
 
 section .main-section .section-title {
   font-family: 'Pacifico', cursive;
@@ -97,8 +88,6 @@ section .main-section .add-book-button-container :hover {
   grid-template-rows: repeat(2, 1fr);
   gap: 15px 15px;
   padding: 20px;
-  /* border: #000 solid 2px; */
-  /* visibility: hidden; */
 }
 
 .card {
@@ -118,7 +107,6 @@ section .main-section .add-book-button-container :hover {
 }
 
 .remove {
-  /* color: #fff; */
   border-radius: 50%;
   width: 20px;
   text-align: center;
@@ -127,7 +115,6 @@ section .main-section .add-book-button-container :hover {
 }
 
 .remove:hover {
-  /* color: #000; */
   cursor: pointer;
   transform: rotate(100deg) scale(1.5);
 }
@@ -140,11 +127,9 @@ section .main-section .add-book-button-container :hover {
 .header {
   padding: 15px 0 0 10px;
   font-family: 'Cinzel', serif;
-  /* color: #fff; */
 }
 
 .book-info {
-  /* color: #fff; */
   font-family: 'Cinzel', serif;
   padding: 15px 0 0 10px;
 }
@@ -154,7 +139,6 @@ section .main-section .add-book-button-container :hover {
 }
 
 .read-status {
-  /* color: #fff; */
   font-family: 'Cinzel', serif;
   padding: 25px 0 0px 20px;
   width: 100px;
@@ -190,7 +174,7 @@ section .main-section .add-book-button-container :hover {
   display: flex;
   flex-flow: column;
   margin: auto;
-  background: radial-gradient(#60efbc, #58d5c9);
+  background: radial-gradient(#cd9fe3, #dcc1e8);
   width: 600px;
   height: 700px;
   padding: 20px;

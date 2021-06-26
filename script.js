@@ -1,9 +1,10 @@
-const formSubmit = document.querySelector('.submit-form');
 const addBookButton = document.querySelector('.add-book-button');
+const formSubmit = document.querySelector('.submit-form');
 const formContainer = document.querySelector('.container');
-const closeFormButton = document.querySelector('.form-close-button');
+const formCloseButton = document.querySelector('.form-close-button');
 const grid = document.querySelector('.grid');
 let removeBookButton = undefined;
+let isRead = undefined;
 let bookList = [];
 
 class Book {
@@ -17,8 +18,38 @@ class Book {
   }
 }
 
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(title) {
+    const books = Store.getBooks();
+    books.forEach((book, index) => {
+      if (book.title === title) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
 class Display {
   static displayBook() {
+    bookList = Store.getBooks();
     bookList.forEach((book) => {
       this.addBookToList(book);
     });
@@ -53,14 +84,34 @@ class Display {
     grid.appendChild(newCard);
     // Select all elements with remove class when new book is added;
     removeBookButton = Array.from(document.querySelectorAll('.remove'));
-    // Call remove function to update eventListener status;
+    // SSelect all elements with read-status;
+    isRead = Array.from(document.querySelectorAll('.read-status'));
+    // Call remove and update reading status function to update eventListener status;
     Display.removeBookFromList();
+    Display.updateReadStatus();
+    // Store.addBook(book);
+  }
+
+  static updateReadStatus() {
+    isRead.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        bookList.forEach((book) => {
+          if (
+            book.title ===
+            e.target.parentElement.parentElement.children[1].innerText
+          ) {
+            book.read = true;
+            e.target.parentElement.parentElement.classList.add('have-read');
+            e.target.innerText = 'Done Reading';
+          }
+        });
+      });
+    });
   }
 
   static removeBookFromList() {
     removeBookButton.forEach((button) => {
       button.addEventListener('click', (e) => {
-        // console.log(e.target.parentElement.parentElement.children[1].innerText);
         // Remove the book from booklist array;
         // Here I assume no two books share the same name :>;
         // It should have a unique identifier for this job, but anyways..
@@ -70,6 +121,7 @@ class Display {
             e.target.parentElement.parentElement.children[1].innerText
           ) {
             bookList.splice(index, 1);
+            Store.removeBook(book.title);
           }
         });
         // Remove DOM element;
@@ -84,7 +136,7 @@ const addNewBook = (title, author, page, year, language, read) => {
   bookList.push(new Book(title, author, page, year, language, read));
 };
 
-// Add new book form events control;
+// Add-new-book-form events control;
 const formEventController = () => {
   addBookButton.addEventListener('click', () => {
     formContainer.classList.add('active');
@@ -108,29 +160,13 @@ const formEventController = () => {
     formContainer.classList.remove('active');
     formSubmit.reset();
     Display.addBookToList(tmpBookInfo);
+    Store.addBook(tmpBookInfo);
   });
 
-  closeFormButton.addEventListener('click', () => {
+  formCloseButton.addEventListener('click', () => {
     formContainer.classList.remove('active');
   });
 };
-
-addNewBook(
-  'The Old Man and The Sea',
-  'Charles Wong',
-  222,
-  '1959',
-  'English',
-  false
-);
-addNewBook(
-  'Introduction to Algorithms',
-  'Charles Wong',
-  235,
-  '2001',
-  'English',
-  false
-);
 
 // Display books and active form event controller;
 document.addEventListener('DOMContentLoaded', () => {
