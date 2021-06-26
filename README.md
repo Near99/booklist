@@ -14,6 +14,8 @@ All a tags in the header are just for styling purpose. Maybe will add some featu
 
 There are some serious issues I haven't fixed yet such as there's no uid for each book, have to use book title to remove element from array. 
 
+All book.read boolean value will be set to string after page reload, didn't handle data converting issue.
+
 Add-book button won't disappear immediately when the submit form popup.
 
 The position of form-close button is wired I know but I am so tired of styling the page..
